@@ -14,7 +14,9 @@ func main() {
 }
 
 func run() error {
-	server := goswa.NewServer()
+	logger := goswa.NewAppLogger()
+	server := goswa.NewServer(logger)
+	logger.Info("Serving at :8080...")
 	if err := http.ListenAndServe(":8080", server); err != nil {
 		return err
 	}

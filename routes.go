@@ -6,12 +6,14 @@ import (
 )
 
 func (s *Server) routes() {
-	s.Handle("/", s.handleOla())
+	s.router.Handle("/", s.handleOla())
 }
 
 func (s *Server) handleOla() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Hello %s")
+		name := r.FormValue("name")
+		s.logger.Info(fmt.Sprintf("GET / name=%s", name))
+		fmt.Fprintf(w, "Hello %s", name)
 	}
 
 }

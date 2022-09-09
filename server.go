@@ -3,15 +3,18 @@ package goswa
 import "net/http"
 
 type Server struct {
-	*http.ServeMux
+	router *http.ServeMux
+	logger *AppLogger
 }
 
-func NewServer() *Server {
+func NewServer(logger *AppLogger) *Server {
 	s := &Server{}
-	s.ServeMux = http.NewServeMux()
+	s.logger = logger
+	s.router = http.NewServeMux()
+	s.routes()
 	return s
 }
 
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	s.ServeHTTP(w, r)
+	s.router.ServeHTTP(w, r)
 }
