@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"adnotanumber.com/goswa"
+	"adnotanumber.com/goswa/pkg"
 )
 
 func main() {
