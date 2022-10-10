@@ -12,10 +12,10 @@ Largely inspired by Mat Ryer videos on how he writes web API.
 
 # Build
 
-
 ```shell
-go build -o server cmd/goswa/main.go
+make build
 ```
+Will create an executable named `server` at root folder.
 
 With Docker:
 
@@ -23,6 +23,17 @@ With Docker:
 ./scripts/build_image.sh
 ```
 An image named `goswa` will be build.
+
+# Run
+
+```shell
+make run
+```
+
+To test it:
+```shell
+curl localhost:8080?name=Dude
+```
 
 # Deploy on K8S
 
