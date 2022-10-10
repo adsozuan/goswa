@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: goswa
+  name: goswa
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: goswa
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: goswa
+    spec:
+      containers:
+      - image: goswa:latest
+        name: goswa
+        resources: {}
+        imagePullPolicy: Never
+status: {}
