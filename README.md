@@ -9,3 +9,43 @@ A simple go web application example for working out Go web stuffs
 
 
 Largely inspired by Mat Ryer videos on how he writes web API.
+
+# Build
+
+
+```shell
+go build -o server cmd/goswa/main.go
+```
+
+With Docker:
+
+```shell
+./scripts/build_image.sh
+```
+An image named `goswa` will be build.
+
+# Deploy on K8S
+
+Tested with minikube.
+
+Make you docker client point to run in minikube environment
+with:
+
+```shell
+eval $(minikube docker-env)
+```
+
+Build your image:
+
+```shell
+./scripts/build_image.sh
+```
+
+Deploy it:
+
+```shell
+minikube kubectl -- apply -f build/package/deployment.yaml
+```
+
+
+
