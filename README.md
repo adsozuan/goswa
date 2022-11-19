@@ -15,7 +15,7 @@ Largely inspired by Mat Ryer videos on how he writes web API.
 ```shell
 make build
 ```
-Will create an executable named `server` at root folder.
+Will create an executable named `server` in bin/ folder.
 
 With Docker:
 

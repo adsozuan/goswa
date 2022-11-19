@@ -1,12 +1,13 @@
 package main
 
 import (
-    "fmt"
+	"flag"
+	"fmt"
 	"log"
 	"net/http"
-    "os"
+	"os"
 
-	"adnotanumber.com/goswa/pkg"
+	goswa "adnotanumber.com/goswa/pkg"
 )
 
 func main() {
@@ -15,12 +16,21 @@ func main() {
 	}
 }
 
-
 func run() error {
-    hostname, err := os.Hostname()
-    if err!=nil {
-     return err
-    }
+
+	var version bool
+	flag.BoolVar(&version, "version", false, "display version and exit")
+	flag.Parse()
+
+	if version {
+		fmt.Printf("version: %s\n", goswa.GetVersion())
+		return nil
+	}
+
+	hostname, err := os.Hostname()
+	if err != nil {
+		return err
+	}
 
 	logger := goswa.NewAppLogger()
 	server := goswa.NewServer(logger)
